@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyCompany SPA - Online Check-in</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"
+          integrity="sha384-3zrN8inqheKQRsLXoEQp8k5OPEXuGvFw0L6++c8pO4WLAZqqLJhlhQ8+xDhYj5vq"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 20 L28 20 M20 12 L28 20 L20 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        AnyCompany SPA
+      </div>
+      <nav class="nav-links">
+        <a href="#" class="nav-link">Flights</a>
+        <a href="#" class="nav-link active">Check-in</a>
+        <a href="#" class="nav-link">My Trips</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-steps">
+      <div class="progress-step" data-step="login">
+        <div class="step-dot"></div>
+        <span>Login</span>
+      </div>
+      <div class="progress-step" data-step="seats">
+        <div class="step-dot"></div>
+        <span>Seats</span>
+      </div>
+      <div class="progress-step" data-step="baggage">
+        <div class="step-dot"></div>
+        <span>Baggage</span>
+      </div>
+      <div class="progress-step" data-step="extras">
+        <div class="step-dot"></div>
+        <span>Extras</span>
+      </div>
+      <div class="progress-step" data-step="review">
+        <div class="step-dot"></div>
+        <span>Review</span>
+      </div>
+      <div class="progress-step" data-step="success">
+        <div class="step-dot"></div>
+        <span>Done</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Step 1: Login -->
+    <section id="step-login" class="step-section active">
+      <div class="card card-wide">
+        <div class="card-header">
+          <h1>Online Check-in</h1>
+          <p>Enter your booking details to begin check-in</p>
+        </div>
+
+        <form onsubmit="return validateLogin(event)" class="login-form">
+          <div class="form-group">
+            <label for="code">Confirmation Code</label>
+            <input type="text" id="code" name="code" placeholder="e.g., AJ2024" maxlength="10" required>
+            <span class="error-message" id="code-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" id="name" name="name" placeholder="As shown on booking" required>
+            <span class="error-message" id="name-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large">
+            Find My Booking
+          </button>
+        </form>
+
+        <div class="demo-hint">
+          <strong>Demo:</strong> Use code <code>AJ2024</code> and last name <code>Chen</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: Seat Selection -->
+    <section id="step-seats" class="step-section">
+      <div class="seat-selection-layout">
+        <div class="seat-map-container">
+          <div class="card">
+            <h2>Select Your Seats</h2>
+            <p class="subtitle">Click a seat to select it for the current passenger</p>
+            <div id="seat-map-content">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="passenger-sidebar">
+          <div class="card">
+            <h3>Passengers</h3>
+            <div id="passenger-panel">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <button id="seats-continue" class="btn btn-primary btn-large" onclick="goToBaggage()" disabled>
+            Continue to Baggage
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Baggage -->
+    <section id="step-baggage" class="step-section">
+      <div class="card card-wide">
+        <h2>Baggage Options</h2>
+        <p class="subtitle">Add extra baggage for your journey</p>
+
+        <div id="baggage-content">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-secondary" onclick="goToSeats()">Back</button>
+          <button class="btn btn-primary" onclick="goToExtras()">Continue to Extras</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4: Extras -->
+    <section id="step-extras" class="step-section">
+      <div class="card card-wide">
+        <h2>Enhance Your Trip</h2>
+        <p class="subtitle">Add these services to make your journey even better</p>
+
+        <div id="extras-content">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-secondary" onclick="goToBaggage()">Back</button>
+          <button class="btn btn-primary" onclick="goToReview()">Review & Confirm</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5: Review -->
+    <section id="step-review" class="step-section">
+      <div class="card card-wide">
+        <h2>Review Your Check-in</h2>
+        <p class="subtitle">Please review your selections before confirming</p>
+
+        <div class="review-sections">
+          <div class="review-section">
+            <h3>Flight Details</h3>
+            <div id="review-flight"></div>
+          </div>
+
+          <div class="review-section">
+            <h3>Passengers & Seats</h3>
+            <div id="review-passengers"></div>
+          </div>
+
+          <div class="review-section">
+            <h3>Baggage</h3>
+            <div id="review-baggage"></div>
+          </div>
+
+          <div class="review-section">
+            <h3>Extras</h3>
+            <div id="review-extras"></div>
+          </div>
+
+          <div class="review-total">
+            <span>Additional Charges</span>
+            <span id="review-total">$0</span>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-secondary" onclick="goToExtras()">Back</button>
+          <button class="btn btn-primary btn-large" onclick="confirmCheckIn()">
+            Confirm Check-in
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 6: Success -->
+    <section id="step-success" class="step-section">
+      <div class="success-header">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+        </div>
+        <h1>Check-in Complete!</h1>
+        <p>Your boarding passes are ready. Have a wonderful flight!</p>
+      </div>
+
+      <div id="boarding-passes">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="button-group" style="justify-content: center;">
+        <button class="btn btn-primary" onclick="downloadPasses()">
+          Download Boarding Passes
+        </button>
+        <button class="btn btn-secondary" onclick="newCheckIn()">
+          Start New Check-in
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading Spinner Overlay -->
+  <div class="spinner-overlay" id="spinner-overlay">
+    <div class="spinner-content">
+      <div class="spinner"></div>
+      <p id="spinner-text">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h3 id="modal-title">Confirm</h3>
+      <p id="modal-body">Are you sure?</p>
+      <div class="modal-buttons">
+        <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="modal-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "confirmation": "SKW789",
+  "lastName": "Stiles",
+  "flight": {
+    "number": "SW1234",
+    "airline": "AnyCompany Airlines",
+    "departure": {
+      "airport": "JFK",
+      "city": "New York",
+      "terminal": "4",
+      "gate": "B22",
+      "date": "2025-01-15",
+      "time": "08:30"
+    },
+    "arrival": {
+      "airport": "LAX",
+      "city": "Los Angeles",
+      "terminal": "6",
+      "date": "2025-01-15",
+      "time": "11:45"
+    },
+    "aircraft": "AnyPlane 700",
+    "duration": "5h 15m"
+  },
+  "passengers": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Stiles",
+      "type": "adult",
+      "seat": null
+    },
+    {
+      "id": 2,
+      "firstName": "Mary",
+      "lastName": "Stiles",
+      "type": "adult",
+      "seat": null
+    },
+    {
+      "id": 3,
+      "firstName": "Mateo",
+      "lastName": "Stiles",
+      "type": "child",
+      "seat": null
+    }
+  ],
+  "baggage": {
+    "included": {
+      "cabin": 1,
+      "checked": 1
+    },
+    "options": [
+      {"id": "extra-cabin", "name": "Extra Cabin Bag", "price": 35},
+      {"id": "extra-checked", "name": "Extra Checked Bag", "price": 45},
+      {"id": "overweight", "name": "Overweight Bag (23-32kg)", "price": 75}
+    ]
+  },
+  "extras": [
+    {"id": "insurance", "name": "Travel Insurance", "price": 29, "description": "Trip cancellation and medical coverage"},
+    {"id": "lounge", "name": "Lounge Access", "price": 45, "description": "Pre-flight lounge access at JFK"},
+    {"id": "priority", "name": "Priority Boarding", "price": 15, "description": "Board first and secure overhead space"},
+    {"id": "wifi", "name": "In-flight WiFi", "price": 12, "description": "High-speed internet during flight"},
+    {"id": "meal", "name": "Premium Meal", "price": 18, "description": "Chef-prepared meal selection"}
+  ],
+  "seatMap": {
+    "rows": 30,
+    "columns": ["A", "B", "C", "D", "E", "F"],
+    "premiumRows": [1, 2, 3, 4, 5],
+    "exitRows": [10, 25],
+    "occupied": ["1A", "1B", "2C", "2D", "3A", "4F", "5B", "5C", "6A", "6D", "7B", "7E", "8A", "8C", "8F", "9B", "10A", "10D", "11C", "11E", "12A", "12B", "13D", "13F", "14A", "14E", "15B", "15C", "16A", "16F", "17D", "18B", "18E", "19A", "19C", "20D", "20F", "21A", "21B", "22C", "22E", "23A", "23F", "24B", "24D", "25A", "25C", "25E", "26B", "26F", "27A", "27D", "28C", "28E", "29A", "29B", "30D", "30F"],
+    "premiumPrice": 25
+  }
+}

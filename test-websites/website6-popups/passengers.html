@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passenger Details - AnyCompany Popups</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="passengers">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌊</span>
+      <span class="logo-text">AnyCompany Popups</span>
+    </div>
+    <nav>
+      <a href="#">Book</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Trips</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <div class="progress-bar">
+    <div class="step completed">1. Login</div>
+    <div class="step active">2. Passengers</div>
+    <div class="step">3. Seats</div>
+    <div class="step">4. Baggage</div>
+    <div class="step">5. Confirm</div>
+  </div>
+
+  <main class="container">
+    <div class="flight-summary">
+      <div class="flight-info">
+        <span class="flight-number">PS789</span>
+        <span class="flight-route">SFO → HNL</span>
+        <span class="flight-date">Feb 15, 2025 • 08:30</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Passenger Information</h1>
+      <p class="subtitle">Please verify and complete passenger details</p>
+
+      <div id="passengers-container">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Autocomplete Search Challenge -->
+      <div class="add-passenger-section" id="add-passenger-section">
+        <h3>Add Travel Companion (Optional)</h3>
+        <p class="hint-text">Search for a frequent flyer to add to your booking</p>
+
+        <div class="form-group autocomplete-wrapper">
+          <label for="companion-search">Search Frequent Flyer</label>
+          <input type="text" id="companion-search"
+                 placeholder="Type name or member number..."
+                 autocomplete="off"
+                 oninput="handleAutocompleteInput(this.value)"
+                 onfocus="showAutocomplete()"
+                 onblur="hideAutocompleteDelayed()">
+
+          <!-- Autocomplete Dropdown -->
+          <div class="autocomplete-dropdown" id="autocomplete-dropdown">
+            <div class="autocomplete-loading" id="autocomplete-loading">
+              <span class="spinner"></span> Searching...
+            </div>
+            <div class="autocomplete-results" id="autocomplete-results">
+              <!-- Populated by JS -->
+            </div>
+            <div class="autocomplete-no-results" id="autocomplete-no-results">
+              No frequent flyers found
+            </div>
+          </div>
+        </div>
+
+        <div class="selected-companion" id="selected-companion" style="display: none;">
+          <div class="companion-info">
+            <strong id="companion-name"></strong>
+            <span id="companion-number"></span>
+          </div>
+          <button type="button" class="btn btn-small btn-danger" onclick="removeCompanion()">Remove</button>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button class="btn btn-secondary" onclick="window.location.href='index.html'">Back</button>
+        <button class="btn btn-primary" id="continue-btn" onclick="handleContinue()" disabled>Continue to Seats</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

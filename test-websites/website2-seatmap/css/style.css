@@ -1,0 +1,369 @@
+/* AnyCompany SeatMap - Minimal/Functional Style */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.5;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 20px 0 10px;
+  font-size: 1.2em;
+}
+
+/* Forms */
+form {
+  margin: 20px 0;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border: 1px solid #666;
+  font-size: 1em;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid #007bff;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 5px 5px 5px 0;
+}
+
+button[type="submit"],
+.btn-primary {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+button[type="submit"]:hover,
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+button[type="submit"]:disabled,
+.btn-primary:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #666;
+}
+
+.btn-secondary:hover {
+  background: #f0f0f0;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #1e7e34;
+}
+
+/* Error messages */
+.error {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Info box */
+.info-box {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+/* Progress */
+.progress {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.progress-step {
+  padding: 5px 15px;
+  background: #ddd;
+}
+
+.progress-step.active {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.progress-step.done {
+  background: #28a745;
+  color: white;
+}
+
+/* Seat Map */
+.seat-map {
+  margin: 20px 0;
+}
+
+.seat-grid {
+  display: inline-block;
+  background: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+}
+
+.row-num {
+  width: 30px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.seat {
+  width: 32px;
+  height: 32px;
+  margin: 2px;
+  border: 1px solid #999;
+  background: #e0e0e0;
+  font-size: 0.75em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seat:hover:not(.occupied):not(.selected) {
+  background: #c0c0c0;
+}
+
+.seat.selected {
+  background: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.seat.occupied {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.seat.premium {
+  background: #fff3cd;
+  border-color: #ffc107;
+}
+
+.seat.premium.selected {
+  background: #007bff;
+}
+
+.seat.exit {
+  border: 2px solid #28a745;
+}
+
+.seat.bulkhead {
+  border-top: 3px solid #6c757d;
+}
+
+.aisle {
+  width: 20px;
+}
+
+.column-headers {
+  display: flex;
+  padding-left: 40px;
+  margin-bottom: 5px;
+}
+
+.column-headers span {
+  width: 32px;
+  margin: 2px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+  padding: 10px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85em;
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+}
+
+/* Options */
+.options-list {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.options-list li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.options-list li:hover {
+  background: #f8f9fa;
+}
+
+.options-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.price {
+  margin-left: auto;
+  font-weight: bold;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+.total-row {
+  font-weight: bold;
+  background: #f8f9fa;
+}
+
+/* Boarding Pass */
+.boarding-pass {
+  border: 2px dashed #333;
+  padding: 20px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.boarding-pass h3 {
+  text-align: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+.boarding-pass-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.boarding-pass-field {
+  padding: 5px;
+}
+
+.boarding-pass-field .label {
+  font-size: 0.75em;
+  color: #666;
+}
+
+.boarding-pass-field .value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.boarding-pass-route {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/* Navigation */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* Passenger info */
+.passenger-info {
+  background: #e7f3ff;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-left: 4px solid #007bff;
+}
+
+/* Section marker for a11y testing */
+.section-marker {
+  background: #f0f0f0;
+  padding: 5px 10px;
+  margin: 10px 0;
+  font-size: 0.85em;
+  color: #666;
+}

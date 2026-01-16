@@ -1,0 +1,17 @@
+{
+  "AirlineTestWebsitesStack": {
+    "website2quickflyDistributionId": "E2B20001I5WYHF",
+    "website5budgetwingsUrl": "https://d3scv1fx1tdm2k.cloudfront.net",
+    "website3aerojetUrl": "https://dbcbr5mn9gcp2.cloudfront.net",
+    "website4globalairDistributionId": "ES0VO83D7VRHY",
+    "website1skywestUrl": "https://d1qzwt00o37km8.cloudfront.net",
+    "website5budgetwingsDistributionId": "E2Y2JVYMAI5CKY",
+    "website1skywestDistributionId": "E1KTGS4DVBKF50",
+    "website4globalairUrl": "https://d24j1ss4cc258e.cloudfront.net",
+    "website3aerojetDistributionId": "EBKVO0W5VWH3H",
+    "website6pacificskyUrl": "https://d2mr6evh1499ea.cloudfront.net",
+    "CloudFrontKeyPairId": "KV0ENFS4EYE67",
+    "website6pacificskyDistributionId": "E3BAG58HMW9ZMN",
+    "website2quickflyUrl": "https://d2aarl3ctec4l3.cloudfront.net"
+  }
+}

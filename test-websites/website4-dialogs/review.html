@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review & Confirm - AnyCompany Dialogs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="review">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌍</span>
+      AnyCompany Dialogs
+    </div>
+    <nav>
+      <a href="#">Flights</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Bookings</a>
+    </nav>
+  </header>
+
+  <div class="progress-bar">
+    <div class="step completed">1. Login</div>
+    <div class="step completed">2. Passengers</div>
+    <div class="step completed">3. Seats</div>
+    <div class="step completed">4. Extras</div>
+    <div class="step active">5. Review</div>
+  </div>
+
+  <main class="container">
+    <h1>Review Your Check-in</h1>
+    <p class="subtitle">Please review all details before confirming</p>
+
+    <div class="review-sections" id="review-content">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Terms & Conditions - must scroll to enable checkbox -->
+    <div class="terms-section">
+      <h3>Terms & Conditions</h3>
+      <div class="terms-box" id="terms-box">
+        <h4>AnyCompany Dialogs Conditions of Carriage</h4>
+        <p>By completing this check-in, you agree to the following terms and conditions:</p>
+
+        <h5>1. Travel Documents</h5>
+        <p>All passengers are responsible for ensuring they have valid travel documents including passports, visas, and any required health certificates. AnyCompany Dialogs is not responsible for denied boarding due to inadequate documentation.</p>
+
+        <h5>2. Baggage Policy</h5>
+        <p>Each passenger is entitled to one cabin bag (max 8kg) and one checked bag (max 23kg). Additional or overweight baggage will incur extra charges as displayed during the booking process.</p>
+
+        <h5>3. Check-in Requirements</h5>
+        <p>Online check-in closes 2 hours before departure for international flights. Passengers must be at the boarding gate no later than 45 minutes before departure.</p>
+
+        <h5>4. Dangerous Goods</h5>
+        <p>Passengers are prohibited from carrying dangerous goods as defined by IATA regulations. This includes but is not limited to: explosives, flammable liquids, toxic substances, and compressed gases.</p>
+
+        <h5>5. Liability Limitations</h5>
+        <p>AnyCompany Dialogs's liability for loss, damage, or delay of baggage is limited according to the Montreal Convention. For international flights, this is currently SDR 1,288 per passenger.</p>
+
+        <h5>6. Flight Changes</h5>
+        <p>AnyCompany Dialogs reserves the right to change flight times, routes, or aircraft. In case of significant changes, passengers will be notified and offered alternatives or refunds as applicable.</p>
+
+        <h5>7. Health Requirements</h5>
+        <p>Passengers must comply with all health requirements of destination countries. AnyCompany Dialogs may deny boarding to passengers who do not meet these requirements.</p>
+
+        <h5>8. Privacy Policy</h5>
+        <p>Personal data collected during booking and check-in is processed in accordance with AnyCompany Dialogs's Privacy Policy and applicable data protection regulations.</p>
+
+        <p class="scroll-hint" id="scroll-hint">↓ Scroll to read all terms ↓</p>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms-checkbox" disabled>
+        <label for="terms-checkbox" id="terms-label">
+          I have read and agree to the Terms & Conditions
+          <span class="checkbox-hint" id="checkbox-hint">(scroll to the bottom to enable)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="total-section">
+      <span>Total Additional Charges:</span>
+      <span class="total-amount" id="total-amount">$0</span>
+    </div>
+
+    <div class="button-row">
+      <button class="btn btn-secondary" onclick="window.location.href='extras.html'">Back</button>
+      <button class="btn btn-primary btn-large" id="confirm-btn" onclick="handleConfirm()" disabled>
+        Confirm Check-in
+      </button>
+    </div>
+  </main>
+
+  <!-- Final confirmation dialog -->
+  <div class="modal-overlay" id="final-confirm-modal">
+    <div class="modal">
+      <h3>Confirm Check-in</h3>
+      <p>You are about to complete check-in for <strong id="passenger-count">4 passengers</strong> on flight <strong>GA456</strong>.</p>
+      <p>Additional charges of <strong id="modal-total">$0</strong> will be applied to your original payment method.</p>
+      <p>Are you sure you want to proceed?</p>
+      <div class="modal-buttons">
+        <button class="btn btn-secondary" onclick="closeFinalModal()">Review Again</button>
+        <button class="btn btn-primary" onclick="completeCheckIn()">Complete Check-in</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

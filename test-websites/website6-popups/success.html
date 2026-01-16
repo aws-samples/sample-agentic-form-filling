@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-in Complete - AnyCompany Popups</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌊</span>
+      <span class="logo-text">AnyCompany Popups</span>
+    </div>
+    <nav>
+      <a href="#">Book</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Trips</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="success-card">
+      <div class="success-header">
+        <div class="success-icon">✓</div>
+        <h1>Check-in Complete!</h1>
+        <p>Your boarding passes are ready</p>
+      </div>
+
+      <div class="boarding-passes" id="boarding-passes">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="travel-tips">
+        <h3>🌴 Travel Tips for Hawaii</h3>
+        <ul>
+          <li>Arrive at SFO Terminal 2 at least 2 hours before departure</li>
+          <li>Have your ID ready for TSA screening</li>
+          <li>No passport required for US citizens traveling to Hawaii</li>
+          <li>Download our mobile app for real-time flight updates</li>
+        </ul>
+      </div>
+
+      <div class="button-row center">
+        <button class="btn btn-secondary" onclick="downloadBoardingPasses()">Download Passes</button>
+        <button class="btn btn-secondary" onclick="emailBoardingPasses()">Email Passes</button>
+        <button class="btn btn-primary" onclick="newCheckIn()">New Check-in</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 AnyCompany Popups. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

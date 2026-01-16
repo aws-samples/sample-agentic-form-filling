@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm - AnyCompany Iframes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="confirm">
+  <header>
+    <div class="logo">AnyCompany Iframes</div>
+    <span class="tagline">Fly for less!</span>
+  </header>
+
+  <div class="steps">
+    <span class="step done">Login</span>
+    <span class="step done">Seats</span>
+    <span class="step done">Bags</span>
+    <span class="step current">Confirm</span>
+  </div>
+
+  <main>
+    <h1>Review & Confirm</h1>
+
+    <div class="summary-box" id="summary">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="terms-box">
+      <h3>Terms of Carriage</h3>
+      <div class="terms-scroll" id="terms-scroll">
+        <p><strong>1. Check-in Requirements</strong></p>
+        <p>Passengers must check in at least 2 hours before departure for domestic flights. Late arrivals may be denied boarding without refund.</p>
+
+        <p><strong>2. Baggage Policy</strong></p>
+        <p>AnyCompany Iframes operates with an unbundled fare structure. Only one small personal item (40x30x15cm) is included. All other baggage incurs additional fees.</p>
+
+        <p><strong>3. Seat Assignment</strong></p>
+        <p>Seats are subject to availability and may be changed at the airline's discretion for operational reasons.</p>
+
+        <p><strong>4. No-Show Policy</strong></p>
+        <p>Passengers who fail to board their flight forfeit all rights to refund or rebooking.</p>
+
+        <p><strong>5. Flight Changes</strong></p>
+        <p>AnyCompany Iframes reserves the right to change flight times with notice. Significant changes entitle passengers to rebooking or refund.</p>
+
+        <p class="scroll-end">--- End of Terms ---</p>
+      </div>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="terms-agree" disabled>
+      <label for="terms-agree">
+        I agree to the Terms of Carriage
+        <span class="hint" id="scroll-hint">(scroll to bottom to enable)</span>
+      </label>
+    </div>
+
+    <!-- Final buttons - ambiguous -->
+    <div class="btn-row">
+      <button class="btn" onclick="window.location.href='bags.html'">Back</button>
+      <button class="btn" onclick="saveForLater()">Save</button>
+      <button class="btn primary" id="confirm-btn" onclick="handleConfirm()" disabled>Confirm</button>
+      <button class="btn primary" id="complete-btn" onclick="handleComplete()" disabled>Complete Check-in</button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

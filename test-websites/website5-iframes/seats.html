@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Seat - AnyCompany Iframes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="seats">
+  <header>
+    <div class="logo">AnyCompany Iframes</div>
+    <span class="tagline">Fly for less!</span>
+  </header>
+
+  <div class="steps">
+    <span class="step done">Login</span>
+    <span class="step current">Seats</span>
+    <span class="step">Bags</span>
+    <span class="step">Confirm</span>
+  </div>
+
+  <main>
+    <h1>Choose Your Seat</h1>
+    <p>Click on an available seat to select it</p>
+
+    <div class="seat-layout">
+      <div class="passenger-info">
+        <strong id="passenger-name">Richard Roe</strong>
+        <div id="current-seat">No seat selected</div>
+      </div>
+
+      <!-- IFRAME: Seat map loaded in iframe to test agent's iframe handling -->
+      <div class="iframe-container">
+        <iframe id="seat-iframe" src="seat-frame.html" title="Seat Selection Map"></iframe>
+      </div>
+
+      <div class="seat-legend">
+        <span><span class="dot available"></span> Available</span>
+        <span><span class="dot selected"></span> Selected</span>
+        <span><span class="dot taken"></span> Taken</span>
+      </div>
+    </div>
+
+    <!-- Hidden element: appears after seat selection -->
+    <div class="hidden-section" id="seat-options" style="display: none;">
+      <h3>Seat Options</h3>
+      <label class="option">
+        <input type="checkbox" id="extra-legroom" onchange="toggleOption('legroom')">
+        Extra Legroom (+$25)
+      </label>
+      <label class="option">
+        <input type="checkbox" id="window-guarantee" onchange="toggleOption('window')">
+        Window Seat Guarantee (+$10)
+      </label>
+    </div>
+
+    <!-- Ambiguous buttons -->
+    <div class="btn-row">
+      <button class="btn" onclick="window.location.href='index.html'">Back</button>
+      <button class="btn" onclick="selectRandomSeat()">Select</button>
+      <button class="btn" onclick="autoAssign()">Select for Me</button>
+      <button class="btn primary" id="continue-btn" onclick="handleContinue()" disabled>Continue</button>
+    </div>
+
+    <!-- Conflict notification (hidden initially) -->
+    <div class="conflict-banner" id="conflict-banner" style="display: none;">
+      <strong>Seat no longer available!</strong>
+      <p>Sorry, seat <span id="conflict-seat"></span> was just taken by another passenger. Please select a different seat.</p>
+      <button class="btn" onclick="dismissConflict()">OK</button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

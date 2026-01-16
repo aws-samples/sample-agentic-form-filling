@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyCompany Popups - Online Check-in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <!-- Cookie Consent Banner - Must be dismissed before interacting -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-content">
+      <div class="cookie-icon">🍪</div>
+      <div class="cookie-text">
+        <h3>We value your privacy</h3>
+        <p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="btn btn-secondary" onclick="handleCookieSettings()">Cookie Settings</button>
+        <button class="btn btn-secondary" onclick="handleRejectCookies()">Reject All</button>
+        <button class="btn btn-primary" onclick="handleAcceptCookies()">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Settings Modal -->
+  <div class="modal-overlay" id="cookie-settings-modal">
+    <div class="modal cookie-settings-modal">
+      <h3>Cookie Preferences</h3>
+      <div class="cookie-option">
+        <label>
+          <input type="checkbox" checked disabled>
+          <span><strong>Essential Cookies</strong> - Required for the website to function</span>
+        </label>
+      </div>
+      <div class="cookie-option">
+        <label>
+          <input type="checkbox" id="analytics-cookies">
+          <span><strong>Analytics Cookies</strong> - Help us improve our website</span>
+        </label>
+      </div>
+      <div class="cookie-option">
+        <label>
+          <input type="checkbox" id="marketing-cookies">
+          <span><strong>Marketing Cookies</strong> - Personalized advertisements</span>
+        </label>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn btn-secondary" onclick="closeCookieSettings()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveCookieSettings()">Save Preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌊</span>
+      <span class="logo-text">AnyCompany Popups</span>
+    </div>
+    <nav>
+      <a href="#">Book</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Trips</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <div class="hero-banner">
+    <div class="hero-content">
+      <h1>Online Check-in</h1>
+      <p>Check in online 24 hours before departure</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="card login-card">
+      <h2>Retrieve Your Booking</h2>
+      <p class="subtitle">Enter your booking details to check in</p>
+
+      <form onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="booking-ref">Booking Reference</label>
+          <input type="text" id="booking-ref" placeholder="e.g., PS1234" autocomplete="off" required>
+          <span class="error" id="booking-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" placeholder="As shown on ticket" autocomplete="off" required>
+          <span class="error" id="name-error"></span>
+        </div>
+
+        <!-- Date Picker Challenge -->
+        <div class="form-group">
+          <label for="departure-date">Departure Date</label>
+          <div class="date-picker-wrapper">
+            <input type="text" id="departure-date" placeholder="Select date" readonly required>
+            <button type="button" class="date-picker-toggle" onclick="toggleDatePicker()">📅</button>
+          </div>
+          <span class="error" id="date-error"></span>
+        </div>
+
+        <div class="button-row">
+          <button type="submit" class="btn btn-primary btn-large" id="checkin-btn">
+            Start Check-in
+          </button>
+        </div>
+      </form>
+
+      <div class="hint">
+        <strong>Test credentials:</strong> Booking: <code>PS1234</code>, Last Name: <code>Jackson</code>, Date: <code>2025-02-15</code>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 AnyCompany Popups. All rights reserved.</p>
+  </footer>
+
+  <!-- Date Picker Modal -->
+  <div class="date-picker-overlay" id="date-picker-overlay">
+    <div class="date-picker-calendar" id="date-picker">
+      <div class="date-picker-modal-header">
+        <h3>📅 Select Departure Date</h3>
+        <button type="button" class="date-picker-close" onclick="closeDatePicker()">&times;</button>
+      </div>
+      <div class="date-picker-header">
+        <button type="button" onclick="prevMonth()">◀</button>
+        <span id="current-month">January 2025</span>
+        <button type="button" onclick="nextMonth()">▶</button>
+      </div>
+      <div class="date-picker-weekdays">
+        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+      </div>
+      <div class="date-picker-days" id="date-picker-days">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

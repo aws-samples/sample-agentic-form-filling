@@ -1,0 +1,11 @@
+.venv/
+.git/
+screenshots/
+execution_guidance/
+*.pyc
+__pycache__/
+.env*
+.claude/
+test-websites/
+.threatmodel/
+uv.lock

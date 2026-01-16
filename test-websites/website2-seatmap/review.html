@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review - AnyCompany SeatMap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="review">
+  <h1>AnyCompany SeatMap Check-in</h1>
+
+  <div class="progress">
+    <span class="progress-step done">1. Seats</span>
+    <span class="progress-step done">2. Baggage</span>
+    <span class="progress-step active">3. Review</span>
+  </div>
+
+  <h2>Review Your Check-in</h2>
+
+  <h3>Flight Details</h3>
+  <div id="flight-info">
+    <!-- Rendered by JS -->
+  </div>
+
+  <h3>Passenger & Seat</h3>
+  <div id="passenger-info">
+    <!-- Rendered by JS -->
+  </div>
+
+  <h3>Baggage</h3>
+  <div id="baggage-info">
+    <!-- Rendered by JS -->
+  </div>
+
+  <div style="margin: 20px 0; padding: 15px; background: #e7f3ff; border: 1px solid #007bff;">
+    <strong>Total Additional Cost: <span id="total">$0</span></strong>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-secondary" onclick="window.location.href='baggage.html'">Back to Baggage</button>
+    <button class="btn-success" onclick="confirmCheckIn()">Confirm Check-in</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

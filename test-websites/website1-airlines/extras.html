@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extras | AnyCompany Airlines</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="extras">
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+          <path d="M10 20 L30 20 M20 10 L30 20 L20 30" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+        AnyCompany Airlines
+      </div>
+      <div class="flight-info-header">
+        <div class="flight-number">Flight SW1234</div>
+        <div>JFK → LAX</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="progress-bar">
+    <div class="progress-steps">
+      <div class="step completed">
+        <span class="step-number">✓</span>
+        <span class="step-label">Seats</span>
+      </div>
+      <div class="step completed">
+        <span class="step-number">✓</span>
+        <span class="step-label">Baggage</span>
+      </div>
+      <div class="step active">
+        <span class="step-number">3</span>
+        <span class="step-label">Extras</span>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <span class="step-label">Review</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h1 style="margin-bottom: 1.5rem;">Enhance Your Journey</h1>
+    <p style="color: var(--gray-500); margin-bottom: 1.5rem;">
+      Add optional services to make your trip more comfortable.
+    </p>
+
+    <div class="card">
+      <h2 class="card-title">Available Extras</h2>
+      <div id="extras-options" class="option-grid">
+        <!-- Extras options rendered by JS -->
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="window.location.href='baggage.html'">
+        ← Back to Baggage
+      </button>
+      <button class="btn btn-primary" onclick="goToReview()">
+        Continue to Review →
+      </button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

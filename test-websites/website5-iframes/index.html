@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyCompany Iframes - Check-in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <header>
+    <div class="logo">AnyCompany Iframes</div>
+    <span class="tagline">Fly for less!</span>
+  </header>
+
+  <main>
+    <div class="box">
+      <h1>Online Check-in</h1>
+
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="field">
+          <label>Booking Reference</label>
+          <input type="text" id="ref" placeholder="e.g., BW123">
+          <span class="err" id="ref-err"></span>
+        </div>
+
+        <div class="field">
+          <label>Surname</label>
+          <input type="text" id="surname" placeholder="Last name">
+          <span class="err" id="surname-err"></span>
+        </div>
+
+        <!-- Ambiguous buttons: multiple similar actions -->
+        <div class="btn-row">
+          <button type="button" class="btn" onclick="lookupBooking()">Look Up</button>
+          <button type="button" class="btn" onclick="findBooking()">Find</button>
+          <button type="submit" class="btn primary">Continue</button>
+        </div>
+      </form>
+
+      <p class="hint">Test: <code>BW123</code> / <code>Roe</code></p>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

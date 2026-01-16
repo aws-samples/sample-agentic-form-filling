@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyCompany Dialogs - Online Check-in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌍</span>
+      AnyCompany Dialogs
+    </div>
+    <nav>
+      <a href="#">Flights</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Bookings</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h1>Online Check-in</h1>
+      <p class="subtitle">Enter your booking details to begin</p>
+
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="booking-ref">Booking Reference</label>
+          <input type="text" id="booking-ref" name="booking-ref" placeholder="e.g., GA7890" required>
+          <span class="error" id="booking-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" placeholder="As shown on booking" required>
+          <span class="error" id="name-error"></span>
+        </div>
+
+        <!-- Ambiguous labels: two buttons that look similar -->
+        <div class="button-row">
+          <button type="button" class="btn btn-secondary" onclick="handleLookup()">Look Up</button>
+          <button type="submit" class="btn btn-primary">Continue</button>
+        </div>
+      </form>
+
+      <div class="hint">
+        <strong>Demo credentials:</strong> <code>GA7890</code> / <code>Salazar</code>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Environment
+.env
+.env.website*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Runtime generated
+screenshots/
+execution_guidance/
+
+# Logs
+*.log
+
+# Lock file
+uv.lock
+
+# Claude Code
+.claude/
+
+# CDK
+infra/cdk.out
+
+# Probe scan exports
+ProbeScanExport*
+docs/pcsr-artifacts/
+dsr-*.xlsx
+~$dsr-2025-11-19-flolac.xlsx
+~$dsr-2025-11-19.xlsx
+.github/workflows/ci.yml
+docs/article_agentic_web_browser_fr_v1.md
+docs/article_agentic_web_browser_fr.md
+docs/programmez-article.md
+docs/programmez.md
+fictitious.md
+*.mov
+*.gif
+infra/cdk-outputs.json
+~$dsr-2025-11-19-v2.xlsx
+infra/cdk-outputs.json

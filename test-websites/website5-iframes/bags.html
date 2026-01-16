@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baggage - AnyCompany Iframes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="bags">
+  <header>
+    <div class="logo">AnyCompany Iframes</div>
+    <span class="tagline">Fly for less!</span>
+  </header>
+
+  <div class="steps">
+    <span class="step done">Login</span>
+    <span class="step done">Seats</span>
+    <span class="step current">Bags</span>
+    <span class="step">Confirm</span>
+  </div>
+
+  <main>
+    <h1>Add Baggage</h1>
+    <p>Your fare includes 1 small personal item only</p>
+
+    <div class="bag-options" id="bag-options">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Hidden until user scrolls down -->
+    <div class="promo-section" id="promo-section">
+      <h3>Special Offers</h3>
+      <p>Complete your booking in the next <span id="countdown">5:00</span> to unlock these deals:</p>
+      <div class="promo-items" id="promo-items">
+        <!-- Shown after scroll -->
+      </div>
+    </div>
+
+    <!-- Multiple similar buttons -->
+    <div class="btn-row">
+      <button class="btn" onclick="window.location.href='seats.html'">Back</button>
+      <button class="btn" onclick="skipBags()">Skip</button>
+      <button class="btn" onclick="addRecommended()">Add Recommended</button>
+      <button class="btn primary" onclick="handleContinue()">Continue</button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review | AnyCompany Airlines</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="review">
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+          <path d="M10 20 L30 20 M20 10 L30 20 L20 30" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+        AnyCompany Airlines
+      </div>
+      <div class="flight-info-header">
+        <div class="flight-number">Flight SW1234</div>
+        <div>JFK → LAX</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="progress-bar">
+    <div class="progress-steps">
+      <div class="step completed">
+        <span class="step-number">✓</span>
+        <span class="step-label">Seats</span>
+      </div>
+      <div class="step completed">
+        <span class="step-number">✓</span>
+        <span class="step-label">Baggage</span>
+      </div>
+      <div class="step completed">
+        <span class="step-number">✓</span>
+        <span class="step-label">Extras</span>
+      </div>
+      <div class="step active">
+        <span class="step-number">4</span>
+        <span class="step-label">Review</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h1 style="margin-bottom: 1.5rem;">Review Your Check-in</h1>
+    <p style="color: var(--gray-500); margin-bottom: 1.5rem;">
+      Please review your selections before confirming your check-in.
+    </p>
+
+    <div class="card">
+      <h2 class="card-title">Flight Details</h2>
+      <div id="flight-info">
+        <!-- Flight info rendered by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Passengers & Seats</h2>
+      <div id="passengers-info">
+        <!-- Passengers info rendered by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Baggage</h2>
+      <div id="baggage-info">
+        <!-- Baggage info rendered by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Extras</h2>
+      <div id="extras-info">
+        <!-- Extras info rendered by JS -->
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--gray-50);">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 1.25rem; font-weight: 600;">Total Additional Charges</span>
+        <span id="grand-total" style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">$0</span>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="window.location.href='extras.html'">
+        ← Back to Extras
+      </button>
+      <button class="btn btn-success" onclick="confirmCheckIn()" style="font-size: 1.1rem; padding: 1rem 2rem;">
+        Confirm Check-in
+      </button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

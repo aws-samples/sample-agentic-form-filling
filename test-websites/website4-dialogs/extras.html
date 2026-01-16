@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extras - AnyCompany Dialogs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="extras">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌍</span>
+      AnyCompany Dialogs
+    </div>
+    <nav>
+      <a href="#">Flights</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Bookings</a>
+    </nav>
+  </header>
+
+  <div class="progress-bar">
+    <div class="step completed">1. Login</div>
+    <div class="step completed">2. Passengers</div>
+    <div class="step completed">3. Seats</div>
+    <div class="step active">4. Extras</div>
+    <div class="step">5. Review</div>
+  </div>
+
+  <main class="container">
+    <h1>Enhance Your Journey</h1>
+    <p class="subtitle">Add extras to make your flight more comfortable</p>
+
+    <div class="extras-grid" id="extras-container">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="button-row">
+      <button class="btn btn-secondary" onclick="window.location.href='seats.html'">Back</button>
+      <!-- Hidden button that appears after scrolling -->
+      <button class="btn btn-outline hidden-until-scroll" id="skip-btn" onclick="skipExtras()">Skip Extras</button>
+      <button class="btn btn-primary" onclick="handleContinue()">Continue</button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

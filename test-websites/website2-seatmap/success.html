@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-in Complete - AnyCompany SeatMap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+  <h1>Check-in Complete!</h1>
+
+  <p style="color: #28a745; font-size: 1.2em; margin: 20px 0;">
+    Your check-in was successful. Here is your boarding pass:
+  </p>
+
+  <div id="boarding-pass" class="boarding-pass">
+    <!-- Rendered by JS -->
+  </div>
+
+  <div style="margin: 30px 0;">
+    <button class="btn-primary" onclick="downloadPass()">Download Boarding Pass</button>
+    <button class="btn-secondary" onclick="newCheckIn()">Start New Check-in</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

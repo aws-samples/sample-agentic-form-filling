@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Seat - AnyCompany SeatMap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="seats">
+  <h1>AnyCompany SeatMap Check-in</h1>
+
+  <div class="progress">
+    <span class="progress-step active">1. Seats</span>
+    <span class="progress-step">2. Baggage</span>
+    <span class="progress-step">3. Review</span>
+  </div>
+
+  <div class="passenger-info">
+    <strong>Passenger:</strong> María García<br>
+    <strong>Flight:</strong> QF567 | ORD to MIA | Jan 20, 2025
+  </div>
+
+  <h2>Select Your Seat</h2>
+
+  <p>Click on an available seat to select it. Note: 40% of seats are randomly unavailable.</p>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-box" style="background:#e0e0e0;"></div>
+      <span>Available</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="background:#007bff;"></div>
+      <span>Selected</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="background:#666;"></div>
+      <span>Unavailable</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="background:#fff3cd;border-color:#ffc107;"></div>
+      <span>Extra Legroom +$40</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="border:2px solid #28a745;"></div>
+      <span>Exit Row +$40</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-box" style="border-top:3px solid #6c757d;"></div>
+      <span>Bulkhead</span>
+    </div>
+  </div>
+
+  <div class="seat-map">
+    <div id="seat-grid" class="seat-grid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <div class="section-marker">
+    <strong>Seat Layout:</strong> AnyPlane 320 (3-3 configuration)
+  </div>
+
+  <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #ddd;">
+    <strong id="selected-seat">No seat selected</strong>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-secondary" onclick="window.location.href='index.html'">Cancel</button>
+    <button id="continue-btn" class="btn-primary" onclick="goToBaggage()" disabled>Continue to Baggage</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

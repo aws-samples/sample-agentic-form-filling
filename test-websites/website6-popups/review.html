@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review & Confirm - AnyCompany Popups</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="review">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌊</span>
+      <span class="logo-text">AnyCompany Popups</span>
+    </div>
+    <nav>
+      <a href="#">Book</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Trips</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <div class="progress-bar">
+    <div class="step completed">1. Login</div>
+    <div class="step completed">2. Passengers</div>
+    <div class="step completed">3. Seats</div>
+    <div class="step completed">4. Baggage</div>
+    <div class="step active">5. Confirm</div>
+  </div>
+
+  <main class="container">
+    <div class="card">
+      <h1>Review Your Check-in</h1>
+      <p class="subtitle">Please review all details before confirming</p>
+
+      <div class="review-sections" id="review-content">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="total-section">
+        <div class="total-label">
+          <span>Additional Charges</span>
+          <span class="total-note">(Seats + Baggage)</span>
+        </div>
+        <span class="total-amount" id="total-amount">$0</span>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="terms-section">
+        <h3>Terms & Conditions</h3>
+        <div class="terms-box" id="terms-box">
+          <h4>AnyCompany Popups - Conditions of Carriage</h4>
+
+          <h5>1. Check-in Requirements</h5>
+          <p>Passengers must arrive at the airport at least 2 hours before domestic flights and 3 hours before international flights. Failure to check in on time may result in denied boarding.</p>
+
+          <h5>2. Baggage Policy</h5>
+          <p>Each passenger is allowed one personal item free of charge. Carry-on bags and checked baggage are subject to fees as selected during the check-in process. Oversized or overweight baggage will incur additional charges at the airport.</p>
+
+          <h5>3. Seat Selection</h5>
+          <p>Seat assignments are subject to change due to operational requirements. Premium and exit row seats have additional requirements including age and physical ability restrictions.</p>
+
+          <h5>4. Travel Documents</h5>
+          <p>Passengers are responsible for ensuring they have valid travel documents including passports, visas, and any required health documentation. AnyCompany Popups is not responsible for denied boarding due to invalid documents.</p>
+
+          <h5>5. Cancellation and Changes</h5>
+          <p>Changes to your booking after check-in may incur fees. Please contact customer service for assistance with modifications to your itinerary.</p>
+
+          <h5>6. Liability</h5>
+          <p>AnyCompany Popups liability for baggage loss or damage is limited as per international conventions. We recommend travel insurance for valuable items.</p>
+
+          <h5>7. Health and Safety</h5>
+          <p>Passengers agree to comply with all safety instructions from crew members. Disruptive behavior may result in denied boarding or removal from the aircraft.</p>
+
+          <div class="scroll-end">— End of Terms —</div>
+        </div>
+        <div class="scroll-hint" id="scroll-hint">↓ Scroll to read all terms</div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms-checkbox" disabled>
+          <label for="terms-checkbox">
+            I have read and agree to the Terms & Conditions and Conditions of Carriage
+          </label>
+        </div>
+        <div class="checkbox-hint" id="checkbox-hint">Please scroll through and read the terms above to enable this checkbox</div>
+      </div>
+
+      <div class="button-row">
+        <button class="btn btn-secondary" onclick="window.location.href='baggage.html'">Back</button>
+        <button class="btn btn-primary btn-large" id="confirm-btn" onclick="handleConfirm()" disabled>Complete Check-in</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Final confirmation modal -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal">
+      <h3>Confirm Check-in</h3>
+      <p>You are about to complete check-in for:</p>
+      <div class="confirm-details">
+        <p><strong>Flight:</strong> PS789 SFO → HNL</p>
+        <p><strong>Date:</strong> February 15, 2025</p>
+        <p><strong>Passengers:</strong> <span id="confirm-passenger-count">2</span></p>
+        <p><strong>Total Additional Charges:</strong> <span id="confirm-total">$0</span></p>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn btn-secondary" onclick="closeConfirmModal()">Go Back</button>
+        <button class="btn btn-primary" onclick="completeCheckIn()">Confirm Check-in</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

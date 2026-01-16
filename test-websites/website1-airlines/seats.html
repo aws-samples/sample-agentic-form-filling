@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Seats | AnyCompany Airlines</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="seats">
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+          <path d="M10 20 L30 20 M20 10 L30 20 L20 30" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+        AnyCompany Airlines
+      </div>
+      <div class="flight-info-header">
+        <div class="flight-number">Flight SW1234</div>
+        <div>JFK → LAX</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="progress-bar">
+    <div class="progress-steps">
+      <div class="step active">
+        <span class="step-number">1</span>
+        <span class="step-label">Seats</span>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <span class="step-label">Baggage</span>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <span class="step-label">Extras</span>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <span class="step-label">Review</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h1 style="margin-bottom: 1.5rem;">Select Your Seats</h1>
+
+    <div class="seat-map-container">
+      <div class="seat-map">
+        <h2 class="card-title">AnyPlane 700</h2>
+        <div class="aircraft-nose"></div>
+        <div id="seat-grid" class="seat-grid">
+          <!-- Seat map rendered by JS -->
+        </div>
+
+        <div class="seat-legend">
+          <div class="legend-item">
+            <div class="legend-seat" style="background: var(--seat-available);"></div>
+            <span>Available</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-seat" style="background: var(--seat-selected);"></div>
+            <span>Selected</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-seat" style="background: var(--seat-occupied);"></div>
+            <span>Occupied</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-seat" style="background: var(--seat-premium);"></div>
+            <span>Premium (+$25)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-seat" style="border: 2px solid var(--seat-exit);"></div>
+            <span>Exit Row</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="passenger-panel">
+        <h2 class="card-title">Passengers</h2>
+        <p style="color: var(--gray-500); margin-bottom: 1rem; font-size: 0.9rem;">
+          Select a passenger, then click a seat on the map
+        </p>
+        <div id="passenger-tabs" class="passenger-tabs">
+          <!-- Passenger tabs rendered by JS -->
+        </div>
+
+        <div class="nav-buttons" style="flex-direction: column; gap: 0.75rem;">
+          <button id="continue-btn" class="btn btn-primary" onclick="goToBaggage()" disabled style="width: 100%;">
+            Continue to Baggage
+          </button>
+          <button class="btn btn-secondary" onclick="window.location.href='index.html'" style="width: 100%;">
+            Cancel Check-in
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

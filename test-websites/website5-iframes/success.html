@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boarding Pass - AnyCompany Iframes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+  <header>
+    <div class="logo">AnyCompany Iframes</div>
+    <span class="tagline">Fly for less!</span>
+  </header>
+
+  <main>
+    <div class="success-header">
+      <div class="checkmark">✓</div>
+      <h1>Check-in Complete!</h1>
+      <p>Your boarding pass is ready</p>
+    </div>
+
+    <div class="boarding-pass" id="boarding-pass">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="btn-row center">
+      <button class="btn primary" onclick="downloadPass()">Download</button>
+      <button class="btn" onclick="emailPass()">Email</button>
+      <button class="btn" onclick="newCheckIn()">New Check-in</button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

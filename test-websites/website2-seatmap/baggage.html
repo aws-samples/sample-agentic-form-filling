@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baggage - AnyCompany SeatMap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="baggage">
+  <h1>AnyCompany SeatMap Check-in</h1>
+
+  <div class="progress">
+    <span class="progress-step done">1. Seats</span>
+    <span class="progress-step active">2. Baggage</span>
+    <span class="progress-step">3. Review</span>
+  </div>
+
+  <div class="passenger-info">
+    <strong>Passenger:</strong> María García<br>
+    <strong>Flight:</strong> QF567 | ORD to MIA | Jan 20, 2025
+  </div>
+
+  <h2>Baggage Selection</h2>
+
+  <div class="info-box">
+    <strong>Included in your fare:</strong><br>
+    1 cabin bag (8kg) + 1 checked bag (23kg)
+  </div>
+
+  <h3>Add Extra Baggage</h3>
+  <ul id="baggage-options" class="options-list">
+    <!-- Rendered by JS -->
+  </ul>
+
+  <div class="nav-buttons">
+    <button class="btn-secondary" onclick="window.location.href='seats.html'">Back to Seats</button>
+    <button class="btn-primary" onclick="goToReview()">Continue to Review</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

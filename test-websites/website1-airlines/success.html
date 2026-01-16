@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-in Complete! | AnyCompany Airlines</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+          <path d="M10 20 L30 20 M20 10 L30 20 L20 30" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+        AnyCompany Airlines
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="success-header">
+      <div class="success-icon">✓</div>
+      <h1>Check-in Complete!</h1>
+      <p>Your boarding passes are ready. Have a great flight!</p>
+    </div>
+
+    <div id="boarding-passes">
+      <!-- Boarding passes rendered by JS -->
+    </div>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+      <button class="btn btn-primary" onclick="downloadBoardingPasses()">
+        Download Boarding Passes
+      </button>
+      <button class="btn btn-secondary" onclick="startNewCheckIn()">
+        Start New Check-in
+      </button>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

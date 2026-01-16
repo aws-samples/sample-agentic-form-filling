@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyCompany SeatMap Check-in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <h1>AnyCompany SeatMap Online Check-in</h1>
+
+  <p>Enter your booking details to check in for your flight.</p>
+
+  <form onsubmit="return validateLogin(event)">
+    <label for="code">Confirmation Code</label>
+    <input type="text" id="code" name="code" placeholder="QF456" required>
+    <div id="code-error" class="error"></div>
+
+    <label for="name">Last Name</label>
+    <input type="text" id="name" name="name" placeholder="García" required>
+    <div id="name-error" class="error"></div>
+
+    <div style="margin-top: 20px;">
+      <button type="submit">Find Booking</button>
+    </div>
+  </form>
+
+  <div class="info-box">
+    <strong>Test Credentials:</strong><br>
+    Code: <code>QF456</code><br>
+    Last Name: <code>García</code>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

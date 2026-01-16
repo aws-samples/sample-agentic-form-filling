@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seat Map</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background: #f5f5f5;
+    }
+
+    .aircraft {
+      background: white;
+      border-radius: 20px 20px 8px 8px;
+      padding: 1rem;
+      max-width: 300px;
+      margin: 0 auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .cockpit {
+      background: #ddd;
+      height: 40px;
+      border-radius: 50% 50% 0 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .row-num {
+      width: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #999;
+    }
+
+    .aisle {
+      width: 20px;
+    }
+
+    .seat {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 4px 4px 6px 6px;
+      cursor: pointer;
+      font-size: 0.65rem;
+      font-weight: bold;
+      transition: all 0.15s;
+    }
+
+    .seat.available {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .seat.available:hover {
+      background: #45a049;
+      transform: scale(1.1);
+    }
+
+    .seat.taken {
+      background: #ccc;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .seat.selected {
+      background: #2196F3;
+      color: white;
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+    }
+
+    .seat.conflict {
+      animation: shake 0.5s;
+      background: #f44336;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ddd;
+      border-top-color: #2196F3;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading" class="loading">
+    <div class="loading-spinner"></div>
+    <p>Loading seat map...</p>
+  </div>
+
+  <div id="aircraft" class="aircraft" style="display: none;">
+    <div class="cockpit">FRONT</div>
+    <div id="seat-map"></div>
+  </div>
+
+  <script>
+    // Seat map configuration
+    const CONFIG = {
+      rows: 25,
+      columns: ['A', 'B', 'C', 'D', 'E', 'F'],
+      occupiedPercentage: 0.35
+    };
+
+    let occupiedSeats = [];
+    let selectedSeat = null;
+    let conflictSeats = []; // Seats that will cause conflict
+
+    // Generate random occupied seats
+    function generateOccupied() {
+      const occupied = [];
+      for (let row = 1; row <= CONFIG.rows; row++) {
+        for (const col of CONFIG.columns) {
+          if (Math.random() < CONFIG.occupiedPercentage) {
+            occupied.push(`${row}${col}`);
+          }
+        }
+      }
+      return occupied;
+    }
+
+    // Generate "conflict" seats - seats that appear available but will fail
+    function generateConflictSeats() {
+      const available = [];
+      for (let row = 1; row <= CONFIG.rows; row++) {
+        for (const col of CONFIG.columns) {
+          const seatId = `${row}${col}`;
+          if (!occupiedSeats.includes(seatId)) {
+            available.push(seatId);
+          }
+        }
+      }
+      // Pick 3-5 random available seats as conflict seats
+      const shuffled = available.sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, 3 + Math.floor(Math.random() * 3));
+    }
+
+    // Render seat map
+    function renderSeatMap() {
+      const container = document.getElementById('seat-map');
+
+      // Clear existing content safely
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+
+      for (let row = 1; row <= CONFIG.rows; row++) {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'row';
+
+        const rowNum = document.createElement('span');
+        rowNum.className = 'row-num';
+        rowNum.textContent = row.toString();
+        rowDiv.appendChild(rowNum);
+
+        CONFIG.columns.forEach((col, idx) => {
+          const seatId = `${row}${col}`;
+          const isOccupied = occupiedSeats.includes(seatId);
+          const isSelected = selectedSeat === seatId;
+
+          let className = 'seat ';
+          if (isSelected) {
+            className += 'selected';
+          } else if (isOccupied) {
+            className += 'taken';
+          } else {
+            className += 'available';
+          }
+
+          const button = document.createElement('button');
+          button.className = className;
+          button.setAttribute('data-seat', seatId);
+          button.setAttribute('aria-label', `Seat ${seatId}`);
+          button.textContent = col;
+          if (isOccupied) {
+            button.disabled = true;
+          }
+
+          // Use event listener instead of inline onclick
+          button.addEventListener('click', () => handleSeatClick(seatId));
+
+          rowDiv.appendChild(button);
+
+          // Aisle after column C
+          if (idx === 2) {
+            const aisle = document.createElement('span');
+            aisle.className = 'aisle';
+            rowDiv.appendChild(aisle);
+          }
+        });
+
+        container.appendChild(rowDiv);
+      }
+    }
+
+    // Handle seat click
+    function handleSeatClick(seatId) {
+      // Check if this is a conflict seat (simulating race condition)
+      if (conflictSeats.includes(seatId) && selectedSeat !== seatId) {
+        // First click seems to work, but then shows conflict
+        showTemporarySelection(seatId);
+
+        setTimeout(() => {
+          showConflict(seatId);
+        }, 800);
+        return;
+      }
+
+      // Normal selection
+      if (selectedSeat === seatId) {
+        selectedSeat = null;
+      } else {
+        selectedSeat = seatId;
+      }
+
+      renderSeatMap();
+      notifyParent();
+    }
+
+    function showTemporarySelection(seatId) {
+      const btn = document.querySelector(`[data-seat="${seatId}"]`);
+      if (btn) {
+        btn.classList.remove('available');
+        btn.classList.add('selected');
+      }
+    }
+
+    function showConflict(seatId) {
+      // Mark as conflict/taken
+      const btn = document.querySelector(`[data-seat="${seatId}"]`);
+      if (btn) {
+        btn.classList.add('conflict');
+        setTimeout(() => {
+          occupiedSeats.push(seatId);
+          conflictSeats = conflictSeats.filter(s => s !== seatId);
+          renderSeatMap();
+          notifyParent('conflict', seatId);
+        }, 500);
+      }
+    }
+
+    // Notify parent window of selection
+    function notifyParent(type = 'select', seatId = null) {
+      if (window.parent !== window) {
+        window.parent.postMessage({
+          type: type,
+          seat: type === 'conflict' ? seatId : selectedSeat
+        }, '*');
+      }
+    }
+
+    // Listen for messages from parent
+    window.addEventListener('message', (event) => {
+      if (event.data.action === 'getSeat') {
+        notifyParent();
+      } else if (event.data.action === 'clearSeat') {
+        selectedSeat = null;
+        renderSeatMap();
+      }
+    });
+
+    // Initialize
+    function init() {
+      // Simulate loading delay
+      setTimeout(() => {
+        // Check for saved state
+        const savedOccupied = sessionStorage.getItem('bw-occupied');
+        const savedConflict = sessionStorage.getItem('bw-conflict');
+
+        if (savedOccupied) {
+          occupiedSeats = JSON.parse(savedOccupied);
+          conflictSeats = savedConflict ? JSON.parse(savedConflict) : generateConflictSeats();
+        } else {
+          occupiedSeats = generateOccupied();
+          conflictSeats = generateConflictSeats();
+          sessionStorage.setItem('bw-occupied', JSON.stringify(occupiedSeats));
+          sessionStorage.setItem('bw-conflict', JSON.stringify(conflictSeats));
+        }
+
+        // Check for previously selected seat
+        const savedSeat = sessionStorage.getItem('bw-seat');
+        if (savedSeat && !occupiedSeats.includes(savedSeat)) {
+          selectedSeat = savedSeat;
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('aircraft').style.display = 'block';
+        renderSeatMap();
+        notifyParent();
+      }, 1500);
+    }
+
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check-in Complete - AnyCompany Dialogs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="success">
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌍</span>
+      AnyCompany Dialogs
+    </div>
+    <nav>
+      <a href="#">Flights</a>
+      <a href="#" class="active">Check-in</a>
+      <a href="#">My Bookings</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="success-banner">
+      <div class="success-icon">✓</div>
+      <h1>Check-in Complete!</h1>
+      <p>Your boarding passes are ready for download</p>
+    </div>
+
+    <div id="boarding-passes">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="button-row center">
+      <button class="btn btn-primary" onclick="downloadPasses()">Download All Boarding Passes</button>
+      <button class="btn btn-secondary" onclick="newCheckIn()">Start New Check-in</button>
+    </div>
+
+    <div class="reminder-box">
+      <h3>Important Reminders</h3>
+      <ul>
+        <li>Arrive at the airport at least 3 hours before departure for international flights</li>
+        <li>Have your passport and visa (if required) ready at check-in</li>
+        <li>Boarding gate closes 20 minutes before departure</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

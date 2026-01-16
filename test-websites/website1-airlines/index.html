@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Check-in | AnyCompany Airlines</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2"/>
+          <path d="M10 20 L30 20 M20 10 L30 20 L20 30" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+        AnyCompany Airlines
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Online Check-in</h1>
+        <p>Enter your booking details to check in for your flight</p>
+      </div>
+
+      <div class="card">
+        <form onsubmit="return validateLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="confirmation-code">Confirmation Code</label>
+            <input type="text"
+                   id="confirmation-code"
+                   class="form-input"
+                   placeholder="e.g., SKW789"
+                   maxlength="10"
+                   autocomplete="off"
+                   required>
+            <div id="code-error" class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="last-name">Last Name</label>
+            <input type="text"
+                   id="last-name"
+                   class="form-input"
+                   placeholder="e.g., Smith"
+                   autocomplete="off"
+                   required>
+            <div id="name-error" class="error-message"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+            Find My Booking
+          </button>
+        </form>
+      </div>
+
+      <div class="card" style="background: #edf2f7;">
+        <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Test Credentials</h3>
+        <p style="font-size: 0.85rem; color: #4a5568;">
+          Code: <strong>SKW789</strong><br>
+          Last Name: <strong>Johnson</strong>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
